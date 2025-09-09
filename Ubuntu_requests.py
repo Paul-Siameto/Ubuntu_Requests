@@ -5,7 +5,7 @@ import uuid
 
 def fetch_image():
     # Prompt the user for the image URL
-    url = input("Enter the image URL: https://unsplash.com/photos/tree-silhouetted-against-a-sunset-sky-viewed-from-cave-BnQForZBh-U ").strip()
+    url = input("Enter the image URL: ").strip()
 
     # Directory to store images
     save_dir = "Fetched_Images"
@@ -32,18 +32,18 @@ def fetch_image():
         with open(filepath, "wb") as f:
             f.write(response.content)
 
-        print(f"✅ Success! Image saved as: {filepath}")
+        print(f"Success! Image saved as: {filepath}")
 
     except requests.exceptions.MissingSchema:
-        print("⚠️ Error: Invalid URL format. Please include http:// or https://")
+        print("Error: Invalid URL format. Please include http:// or https://")
     except requests.exceptions.HTTPError as http_err:
-        print(f"⚠️ HTTP error occurred: {http_err}")
+        print(f"HTTP error occurred: {http_err}")
     except requests.exceptions.ConnectionError:
-        print("⚠️ Connection failed. Please check your internet.")
+        print("Connection failed. Please check your internet.")
     except requests.exceptions.Timeout:
-        print("⚠️ Request timed out. The server took too long to respond.")
+        print("Request timed out. The server took too long to respond.")
     except Exception as e:
-        print(f"⚠️ An unexpected error occurred: {e}")
+        print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
     fetch_image()
